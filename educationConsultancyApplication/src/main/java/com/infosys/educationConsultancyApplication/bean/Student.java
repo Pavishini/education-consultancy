@@ -6,11 +6,11 @@ import jakarta.persistence.Id;
 @Entity
 public class Student {
 	@Id
-	private String registrationNum;
-	private String userName;
+	private String registrationNumber;
+	private String username;
 	private String studentName;
 	private String email;
-	private Long mobile;
+	private String mobile;
 	private String address;
 	private String studentLevel;
 	private String status;
@@ -19,11 +19,11 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Student(String registrationNum, String userName, String studentName, String email, Long mobile,
+	public Student(String registrationNumber, String username, String studentName, String email, String mobile,
 			String address, String studentLevel, String status) {
 		super();
-		this.registrationNum = registrationNum;
-		this.userName = userName;
+		this.registrationNumber = registrationNumber;
+		this.username = username;
 		this.studentName = studentName;
 		this.email = email;
 		this.mobile = mobile;
@@ -31,18 +31,26 @@ public class Student {
 		this.studentLevel = studentLevel;
 		this.status = status;
 	}
+	
+	public String getMobile() {
+		return mobile;
+	}
 
-	public String getRegistrationNum() {
-		return registrationNum;
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
-	public void setRegistrationNum(String registrationNum) {
-		this.registrationNum = registrationNum;
+
+	public String getRegistrationNumber() {
+		return registrationNumber;
 	}
-	public String getUserName() {
-		return userName;
+	public void setRegistrationNumber(String registrationNumber) {
+		this.registrationNumber = registrationNumber;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getStudentName() {
 		return studentName;
@@ -74,23 +82,12 @@ public class Student {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	public Long getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(Long mobile) {
-		this.mobile = mobile;
-	}
-
+	
 	@Override
 	public String toString() {
-		return "Student [registrationNum=" + registrationNum + ", userName=" + userName + ", studentName="
+		return "Student [registrationNumber=" + registrationNumber + ", username=" + username + ", studentName="
 				+ studentName + ", email=" + email + ", mobile=" + mobile + ", address=" + address + ", studentLevel="
 				+ studentLevel + ", status=" + status + "]";
 	}
 	
-	
-	
-
 }

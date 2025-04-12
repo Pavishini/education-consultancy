@@ -1,14 +1,22 @@
 package com.infosys.educationConsultancyApplication.dao;
 
 import java.util.List;
+
 import com.infosys.educationConsultancyApplication.bean.Student;
 
 public interface StudentDao {
+
     public void save(Student student);
-    public Student getStudentById(String id);
+
+    public Student getStudentById(String registrationNumber);
+
     public List<Student> getAllStudents();
-    public String generateNewRegistrationNum();
+
+    public String generateRegistration();
+
     public List<Student> getCurrentStudents();
-    public String getStudentStatusByUserName(String userName);
-    public Student getStudentByUserName(String userName);
+
+    public String getStudentStatusByUsername(String username);
+
+    public Student getStudentByUsername(String username);
 }

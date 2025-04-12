@@ -1,5 +1,4 @@
 package com.infosys.educationConsultancyApplication.controller;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,6 +20,7 @@ import com.infosys.educationConsultancyApplication.service.EduconUserService;
 @RestController
 @RequestMapping("/edu-con/")
 @CrossOrigin(origins = "http://localhost:3636")
+
 public class LoginController {
 	@Autowired
 	private EduconUserService service;
@@ -31,16 +31,18 @@ public class LoginController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
-	@PostMapping("/register")
+	@PostMapping("/login")
 	public void registerNewUser(@RequestBody EduconUser eduUser) {
+		
 		PasswordEncoder bCrypt=econfig.passwordEncoder();
 		String encodedPassword=bCrypt.encode(eduUser.getPassword());
 		eduUser.setPassword(encodedPassword);
 		service.save(eduUser);
 	}
 	
+	
 	@GetMapping("/login/{userId}/{password}")
-	public String validateUser (@PathVariable String userId, @PathVariable String password) {
+	public String validateUser(@PathVariable String userId,@PathVariable String password) {
 		String category="false";
 		try{
 		   	 Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userId, password));
@@ -49,5 +51,6 @@ public class LoginController {
 			}catch(Exception ex) {}
 		 return category;
  
-	}
+	}	
+
 }
